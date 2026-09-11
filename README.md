@@ -21,14 +21,14 @@ The investigation was performed inside an isolated VirtualBox lab network. Kali 
 
 ```mermaid
 flowchart LR
-K["Kali Linux<br/>192.168.56.10<br/>Reconnaissance Source"]
-N["VirtualBox Lab Network<br/>192.168.56.0/24"]
-W["Windows 10<br/>192.168.56.105<br/>Target Endpoint"]
-S["Security Onion<br/>Zeek + Suricata<br/>Network Monitoring"]
+    K["Kali Linux<br/>192.168.56.10<br/>Reconnaissance Source"]
+    N["VirtualBox Host-Only Network<br/>192.168.56.0/24"]
+    W["Windows 10<br/>192.168.56.105<br/>Target Endpoint"]
+    S["Security Onion<br/>Sniffing Interface<br/>Zeek + Suricata"]
 
-K --> N
-N --> W
-N --> S
+    K -->|TCP SYN Scan| N
+    N --> W
+    N -.->|Passive Monitoring| S
 ```
 
 ## Scenario
